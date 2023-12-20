@@ -1,4 +1,4 @@
-Set-ExecutionPolicy Bypass -Scope Process -Force
+
 $chocoInstallPath = "$($env:SystemDrive)\ProgramData\chocolatey"
 $apps = @("office365business", "googlechrome", "tightvnc", "adobereader")
 
@@ -23,7 +23,7 @@ function Install-Package {
     )
 
     choco feature enable -n allowGlobalConfirmation
-    choco install $app --confirm --acceptlicense
+    choco install $apps --confirm --acceptlicense
     
 }
 
@@ -32,9 +32,9 @@ function Install-Menu {
     {
         Write-Host "`n----------------------"
         Write-Host "Enter (1) to install chocolatey"
-        Write-Host "Enter (2) to install software"
+        Write-Host "Enter (2) to install essential software"
         Write-Host "Enter (3) to install both chocolatey and software"
-        Write-Host "Enter (3) to exit"
+        Write-Host "Enter (4) to exit"
         Write-Host "`n----------------------"
 
         $option = Read-Host "Enter option"
@@ -55,8 +55,8 @@ function Install-Menu {
         }
         elseif($option -eq "4")
         {
-            break
             exit
+            
         }
         else {
             Write-Host "Invalid input. Try again!`n"
